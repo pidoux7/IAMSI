@@ -1,0 +1,130 @@
+Exercice 1 question 3
+(facts) après avoir (run)
+f-0     (initial-fact)
+f-1     (pere claire jean)
+f-2     (pere bob jean)
+f-3     (pere yves bob)
+f-4     (mere yves zoe)
+f-5     (mere luc claire)
+f-6     (mere alain claire)
+f-7     (grand_pere alain jean)
+f-8     (parent alain claire)
+f-9     (grand_pere luc jean)
+f-10    (parent luc claire)
+f-11    (frere_et_soeur luc alain)
+f-12    (frere_et_soeur alain luc)
+f-13    (parent yves zoe)
+f-14    (grand_pere yves jean)
+f-15    (parent yves bob)
+f-16    (parent bob jean)
+f-17    (parent claire jean)
+f-18    (frere_et_soeur claire bob)
+f-19    (frere_et_soeur bob claire)
+
+question 4 
+CLIPS> (assert (pere jean butters))
+==> f-20    (pere jean butters)
+<Fact-20>
+CLIPS> (assert (parent louis butters) (mere butters louisette))
+==> f-21    (parent louis butters)
+==> f-22    (mere butters louisette)
+
+après (run)
+FIRE    1 parent2: f-22
+==> f-23    (parent butters louisette)
+FIRE    2 parent1: f-20
+==> f-24    (parent jean butters)
+FIRE    3 frere_et_soeur: f-24,f-21
+==> f-25    (frere_et_soeur jean louis)
+==> f-26    (frere_et_soeur louis jean)
+FIRE    4 frere_et_soeur: f-21,f-24
+FIRE    5 grand_pere1: f-1,f-20
+==> f-27    (grand_pere claire butters)
+FIRE    6 grand_pere1: f-2,f-20
+==> f-28    (grand_pere bob butters)
+
+
+question 5 
+CLIPS> (clear)
+==> f-0     (initial-fact)
+CLIPS> (rules)
+CLIPS> (facts)
+f-0     (initial-fact)
+For a total of 1 fact.
+CLIPS> (reset)
+<== f-0     (initial-fact)
+==> f-0     (initial-fact)
+CLIPS> (facts)
+f-0     (initial-fact)
+For a total of 1 fact.
+
+
+
+question 7 
+; oncle ou tante
+(defrule oncle_tante
+	(parent ?enf ?pereOuMere)
+	(frere_et_soeur ?pereOuMere ?tantoncle)
+=>
+	(assert (oncle_tante ?enf ?tantoncle))
+)
+
+
+==> f-1     (pere claire jean)
+==> f-2     (pere bob jean)
+==> f-3     (pere yves bob)
+==> f-4     (mere yves zoe)
+==> f-5     (mere luc claire)
+==> f-6     (mere alain claire)
+FIRE    2 grand_pere2: f-6,f-1
+==> f-7     (grand_pere alain jean)
+FIRE    3 parent2: f-6
+==> f-8     (parent alain claire)
+FIRE    4 grand_pere2: f-5,f-1
+==> f-9     (grand_pere luc jean)
+FIRE    5 parent2: f-5
+==> f-10    (parent luc claire)
+FIRE    6 frere_et_soeur: f-10,f-8
+==> f-11    (frere_et_soeur luc alain)
+==> f-12    (frere_et_soeur alain luc)
+FIRE    7 frere_et_soeur: f-8,f-10
+FIRE    8 parent2: f-4
+==> f-13    (parent yves zoe)
+FIRE    9 grand_pere1: f-3,f-2
+==> f-14    (grand_pere yves jean)
+FIRE   10 parent1: f-3
+==> f-15    (parent yves bob)
+FIRE   11 parent1: f-2
+==> f-16    (parent bob jean)
+FIRE   12 parent1: f-1
+==> f-17    (parent claire jean)
+FIRE   13 frere_et_soeur: f-17,f-16
+==> f-18    (frere_et_soeur claire bob)
+==> f-19    (frere_et_soeur bob claire)
+FIRE   14 oncle_tante: f-15,f-19
+==> f-20    (oncle_tante yves claire)
+FIRE   15 oncle_tante: f-8,f-18
+==> f-21    (oncle_tante alain bob)
+FIRE   16 oncle_tante: f-10,f-18
+==> f-22    (oncle_tante luc bob)
+FIRE   17 frere_et_soeur: f-16,f-17
+CLIPS> 
+
+
+
+
+Exercice 2
+
+Question 1
+CLIPS> (facts)
+
+f-0     (initial-fact)
+f-36    (attribute (name best-color) (value any) (certainty 100.0))
+f-37    (attribute (name best-body) (value any) (certainty 100.0))
+f-38    (attribute (name best-sweetness) (value any) (certainty 100.0))
+For a total of 4 facts.
+
+Question 3 
+modification de la base de fait executée en ligne de commande en ajoutant des faits
+
+
