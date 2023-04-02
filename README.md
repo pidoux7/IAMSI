@@ -1,0 +1,2 @@
+# IAMSI
+IA symbolique
